@@ -1,0 +1,21 @@
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: MariaDB
+metadata:
+  name: pdns-mariadb
+  namespace: jinkit-ops
+  labels:
+    telco.ocp.run/deployment: powerdns
+    telco.ocp.run/app: powerdns-db
+spec:
+  rootPasswordSecretKeyRef:
+    name: pdns-secrets
+    key: MARIADB_ROOT_PASSWORD
+  storage:
+    size: 5Gi
+    storageClassName: lvms-vg1-immediate
+  service:
+    type: ClusterIP
+  podSecurityContext:
+    runAsUser: 1000750000
+    runAsNonRoot: true

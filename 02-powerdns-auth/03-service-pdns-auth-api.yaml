@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdns-auth-api
+  namespace: jinkit-ops
+  labels:
+    telco.ocp.run/deployment: powerdns
+    telco.ocp.run/service: powerdns-auth-api
+spec:
+  selector:
+    app: pdns-auth
+  ports:
+  - protocol: TCP
+    port: 8081

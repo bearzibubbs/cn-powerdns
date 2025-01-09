@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dns-testing
+  namespace: jinkit-ops
+spec:
+  containers:
+  - image: "docker.io/nicolaka/netshoot:latest"
+    command: ["/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+    name: dns-testing
+    securityContext:
+      runAsUser: 0
+      capabilities:
+        add:
+          - NET_RAW
+          - NET_ADMIN
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: "1"
+      requests:
+        memory: 256Mi
+        cpu: "0.2"

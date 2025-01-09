@@ -1,0 +1,43 @@
+---
+apiVersion: security.openshift.io/v1
+kind: SecurityContextConstraints
+metadata:
+  name: pdns-scc
+allowHostNetwork: false
+allowHostPorts: true
+allowPrivilegeEscalation: true
+allowPrivilegedContainer: false
+defaultAddCapabilities: []
+fsGroup:
+  type: RunAsAny
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+  - MKNOD
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: RunAsAny
+supplementalGroups:
+  type: RunAsAny
+volumes:
+  - configMap
+  - secret
+  - persistentVolumeClaim
+  - emptyDir
+users: []
+groups: []
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pdns-scc-rolebinding
+  namespace: jinkit-ops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pdns-scc
+subjects:
+  - kind: ServiceAccount
+    name: pdns
+    namespace: jinkit-ops

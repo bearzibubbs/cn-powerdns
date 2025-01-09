@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pdns-rec-config
+  namespace: jinkit-ops
+  labels:
+    telco.ocp.run/deployment: powerdns
+    telco.ocp.run/app: powerdns-rec
+data:
+  pdns.conf: |
+    allow-from=0.0.0.0/0
+    local-port=53
+    webserver=yes
+    webserver-allow-from=0.0.0.0/0
+    webserver-port=8082
+    webserver-password=secret
+    api-key=secret
+    webserver-address=0.0.0.0
+    system-resolver-ttl=60
+    max-negative-ttl=1
+    forward-zones-recurse=jinkit.com=pdns-auth-udp,.=8.8.8.8:53

@@ -1,0 +1,17 @@
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Grant
+metadata:
+  name: pdns
+  namespace: jinkit-ops
+  labels:
+    telco.ocp.run/deployment: powerdns
+    telco.ocp.run/app: powerdns-db
+spec:
+  mariaDbRef:
+    name: pdns-mariadb
+    namespace: jinkit-ops
+  privileges:
+  - ALL PRIVILEGES
+  database: pdns
+  username: pdns

@@ -1,0 +1,41 @@
+---
+apiVersion: dns.cav.enablers.ob/v1alpha1
+kind: Zone
+metadata:
+  name: lab.jinkit.com
+spec:
+  nameservers:
+    - ns1.lab.jinkit.com
+  kind: Master
+  catalog: catalog.jinkit
+  soa_edit_api: EPOCH
+
+# ---
+# apiVersion: dns.cav.enablers.ob/v1alpha1
+# kind: RRset
+# metadata:
+#   name: ns.lab.jinkit.com
+# spec:
+#   comment: Nameserver for the lab.jinkit.com zone
+#   type: NS
+#   name: '@'
+#   ttl: 300
+#   records:
+#     - 'ns1.'
+#   zoneRef:
+#     name: lab.jinkit.com
+
+---
+apiVersion: dns.cav.enablers.ob/v1alpha1
+kind: RRset
+metadata:
+  name: ns1.lab.jinkit.com
+spec:
+  comment: Nameserver for the lab.jinkit.com zone
+  type: A
+  name: ns1
+  ttl: 300
+  records:
+    - 10.50.1.5
+  zoneRef:
+    name: lab.jinkit.com
