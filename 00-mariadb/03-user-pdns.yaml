@@ -11,6 +11,6 @@ spec:
   mariaDbRef:
     name: mariadb
   passwordSecretKeyRef:
-    name: powerdns-secret
+    name: pdns-secrets
     key: MARIADB_PASSWORD
   maxUserConnections: 0
