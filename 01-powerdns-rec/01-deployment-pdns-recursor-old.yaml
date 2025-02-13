@@ -3,10 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pdns-recursor
-  namespace: jinkit-ops
+  namespace: powerdns
   labels:
-    telco.ocp.run/deployment: powerdns
-    telco.ocp.run/app: powerdns-rec
     app: pdns-recursor
 spec:
   replicas: 1

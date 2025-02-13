@@ -3,10 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pdns-rec-config
-  namespace: jinkit-ops
-  labels:
-    telco.ocp.run/deployment: powerdns
-    telco.ocp.run/app: powerdns-rec
+  namespace: powerdns
 data:
   pdns.conf: |
     allow-from=0.0.0.0/0
@@ -19,4 +16,4 @@ data:
     webserver-address=0.0.0.0
     system-resolver-ttl=60
     max-negative-ttl=1
-    forward-zones-recurse=jinkit.com=pdns-auth-udp,.=8.8.8.8:53
+    forward-zones-recurse=nekohouse.ca=pdns-auth-udp,.=1.1.1.1:53
