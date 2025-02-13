@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: pdns-recursor
   namespace: powerdns
+  labels:
     app: pdns-recursor
 spec:
   replicas: 1
