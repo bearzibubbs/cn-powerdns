@@ -2,12 +2,12 @@
 apiVersion: k8s.mariadb.com/v1alpha1
 kind: Database
 metadata:
-  name: pdns
-  namespace: jinkit-ops
+  name: nekohouse
+  namespace: powerdns
   labels:
-    telco.ocp.run/deployment: powerdns
-    telco.ocp.run/app: powerdns-db
+    app: powerdns
+    dc: ocp-centralis
 spec:
   mariaDbRef:
-    name: pdns-mariadb
-    namespace: jinkit-ops
+    name: mariadb
+    namespace: powerdns

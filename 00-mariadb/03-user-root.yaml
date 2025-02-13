@@ -1,8 +1,8 @@
 ---
 apiVersion: k8s.mariadb.com/v1alpha1
-kind: Grant
+kind: User
 metadata:
-  name: mariadb-grant
+  name: rootuser
   namespace: powerdns
   labels:
     app: powerdns
@@ -10,8 +10,7 @@ metadata:
 spec:
   mariaDbRef:
     name: mariadb
-    namespace: powerdns
-  privileges:
-  - ALL PRIVILEGES
-  database: nekohouse
-  username: pdns
+  passwordSecretKeyRef:
+    name: powerdns-secret
+    key: MARIADB_ROOT_PASSWORD
+  maxUserConnections: 0

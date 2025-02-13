@@ -3,20 +3,17 @@ apiVersion: k8s.mariadb.com/v1alpha1
 kind: SqlJob
 metadata:
   name: pdns-sqljob
-  namespace: jinkit-ops
-  labels:
-    telco.ocp.run/deployment: powerdns
-    telco.ocp.run/app: powerdns-db
+  namespace: powerdns
 spec:
   mariaDbRef:
-    name: pdns-mariadb
-    namespace: jinkit-ops
+    name: mariadb
+    namespace: powerdns
   backoffLimit: 0
   username: pdns
   passwordSecretKeyRef:
     name: pdns-secrets
     key: MARIADB_PASSWORD
-  database: pdns
+  database: nekohouse
   sql: |
     CREATE TABLE domains (
       id                    INT AUTO_INCREMENT,

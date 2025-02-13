@@ -24,7 +24,7 @@ credentials:
   data:
     # -- Specifies the PowerDNS API URL
     # PDNS_API_URL: "https://powerdns.example.local:8081"
-    PDNS_API_URL: "http://pdns-auth-api:8081"
+    PDNS_API_URL: "http://powerdns-powerdns.apps.ocp-centralis.nekohouse.ca:8081"
     # -- Specifies the PowerDNS API key used to authenticate
     PDNS_API_KEY: "skywalker"
     # -- Specifies the PowerDNS VHOST
